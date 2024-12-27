@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "Email",
       credentials: {
         username: {
           label: "Username",
@@ -18,16 +18,15 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials, req) {
         // Replace this with actual logic to validate the user
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
-
-        if (user) {
-          return user;
-        } else {
-          return null;
-        }
+        return {
+          name: "subh",
+          id: "1",
+          email: "subh@gmail.com",
+        };
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
